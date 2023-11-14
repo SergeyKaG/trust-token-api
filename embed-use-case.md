@@ -42,3 +42,10 @@ only after a substantial amount of interaction between the user and another webs
 contains content from this embed provider. Client identities can still be created in
 excess of the limit, but embed provider would treat them as either bots or brand new users,
 and either present a CAPTCHA or assign zero value to their interaction.
+
+As detection algorithms evolve, PST Issuer can try new versions and pass version number
+in PST metadata. Any uncaught abuse, when detected later, can be reported with
+the algorithm version for debuggability feedback.
+
+A PST Issuer can be shared among multiple embed providers, if they are willing to help
+each other and trust each other.
