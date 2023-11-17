@@ -49,3 +49,24 @@ the algorithm version for debuggability feedback.
 
 A PST Issuer can be shared among multiple embed providers, if they are willing to help
 each other and trust each other.
+
+## Alternative to Shared storage API
+
+Shared Storage API is designed for similar cross-site information sharing, and would allow an
+embed provider to compose user interaction history across multiple websites.
+Shared Storage API should be easier to use: all data is stored on device, eliminating the need
+for server-side storage and analysis.
+
+On the other hand, Stared Storage API is much less defensible, for the same reasons.
+With all storage and processing happening in a browser, there is no way for a website to
+establish that the initial user trust has been calculated correctly, based on correct inputs.
+
+Shared Storage API allows for very limited data exfiltration via window.sharedStorage.selectURL(),
+and no provision for data integrity proof, like a signature in a cookie. A malicious actor can
+spoof the stored data that goes into the choice of URL, or override the choice of the URL.
+Malicious actors can also share their shared storage state, effectively cloning good known
+user profiles.
+
+Server-side user history storage and analysis should resist cloning, spoofing and other forms
+of client-side abuse. Cloned profiles would share the same client identity, and PST issuance
+rate would be divided between them.
